@@ -1,3 +1,4 @@
+Wlad, [19 мая 2026 г., 20:38:01]:
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
@@ -22,10 +23,10 @@ exports.handler = async (event) => {
   const text = [
     '🔥 Новая заявка с сайта AI Строй',
     '',
-    `👤 Имя: ${clean(data.name) || 'не указано'}`,
-    `📲 Telegram / телефон: ${clean(data.contact) || 'не указано'}`,
-    `🏗 Ниша: ${clean(data.niche) || 'не указано'}`,
-    `💬 О бизнесе: ${clean(data.about) || 'не указано'}`,
+    👤 Имя: ${clean(data.name) || 'не указано'},
+    📲 Telegram / телефон: ${clean(data.contact) || 'не указано'},
+    🏗 Ниша: ${clean(data.niche) || 'не указано'},
+    💬 О бизнесе: ${clean(data.about) || 'не указано'},
     '',
     'Источник: сайт'
   ].join('\n');
@@ -43,3 +44,14 @@ exports.handler = async (event) => {
 
   return { statusCode: 200, body: JSON.stringify({ ok: true }) };
 };
+
+const text = [
+  '🔥 Новая заявка с сайта AI Строй',
+  '',
+  👤 Имя: ${clean(data.name) || 'не указано'},
+  📲 Telegram / телефон: ${clean(data.contact) || 'не указано'},
+  🏗 Ниша: ${clean(data.niche) || 'не указано'},
+  💬 О бизнесе: ${clean(data.about) || 'не указано'},
+  '',
+  'Источник: сайт'
+].join('\n');
