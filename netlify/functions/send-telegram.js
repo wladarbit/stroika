@@ -1,4 +1,3 @@
-Wlad, [19 мая 2026 г., 20:38:01]:
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
