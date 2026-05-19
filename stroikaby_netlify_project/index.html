@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Строй — современная упаковка для строительного бизнеса</title>
+<meta name="description" content="AI-визуалы, Reels, сайты и реклама для строительного бизнеса. Помогаем выглядеть современно, вызывать доверие и привлекать клиентов из интернета.">
+<meta property="og:title" content="AI Строй — современная упаковка для строительного бизнеса">
+<meta property="og:description" content="Создаём AI-визуалы, Reels, сайты и рекламу. Привлекайте клиентов через современный AI-контент.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============ RESET + ROOT ============ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black: #07070a;
+  --black-soft: #0f0f14;
+  --card: #131319;
+  --card-hover: #18181f;
+  --line: #1f1f28;
+  --line-soft: #16161d;
+  --yellow: #FFD400;
+  --yellow-hot: #FFE94A;
+  --orange: #FF8A1E;
+  --gradient-fire: linear-gradient(135deg, #FFD400 0%, #FF8A1E 100%);
+  --text: #fff;
+  --text-muted: #8a8a96;
+  --text-soft: #c5c5cf;
+  --radius: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+  --font-display: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+.container { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .container { padding: 0 20px; } }
+
+h1, h2, h3, h4 { font-weight: 900; letter-spacing: -0.02em; line-height: 1.02; }
+h1 { font-size: clamp(40px, 6vw, 72px); letter-spacing: -0.035em; }
+h2 { font-size: clamp(32px, 5vw, 56px); letter-spacing: -0.03em; }
+h3 { font-size: clamp(20px, 2.2vw, 26px); }
+.eyebrow {
+  font-family: var(--font-mono); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--yellow);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--yellow); display: inline-block; }
+.gradient-text {
+  background: var(--gradient-fire);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+.muted { color: var(--text-muted); }
+
+@keyframes float-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 60px rgba(255, 212, 0, 0.15); }
+  50% { box-shadow: 0 0 100px rgba(255, 212, 0, 0.3); }
+}
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 10px; padding: 18px 28px; border-radius: 12px;
+  font-weight: 800; font-size: 15px; letter-spacing: -0.01em;
+  transition: all 0.25s var(--ease); white-space: nowrap;
+}
+.btn-primary {
+  background: var(--gradient-fire); color: #111;
+  box-shadow: 0 8px 30px rgba(255, 138, 30, 0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255, 138, 30, 0.4); }
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.06); color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.12); backdrop-filter: blur(20px);
+}
+.btn-secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 212, 0, 0.4); }
+.btn-tg { background: #229ED9; color: #fff; box-shadow: 0 8px 30px rgba(34, 158, 217, 0.3); }
+.btn-tg:hover { transform: translateY(-2px); background: #2aa8e3; }
+.btn-block { width: 100%; }
+.btn .arrow { transition: transform 0.3s var(--ease); }
+.btn:hover .arrow { transform: translateX(4px); }
+
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(7, 7, 10, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo-box {
+  width: 38px; height: 38px; background: var(--gradient-fire);
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  color: #111; font-weight: 900; font-size: 17px;
+  box-shadow: 0 4px 20px rgba(255, 138, 30, 0.4);
+}
+.logo-text { font-weight: 900; font-size: 18px; letter-spacing: -0.02em; }
+.nav-links { display: flex; gap: 32px; font-size: 14px; color: var(--text-muted); }
+.nav-links a { transition: color 0.2s; }
+.nav-links a:hover { color: var(--yellow); }
+.nav-actions { display: flex; gap: 10px; align-items: center; }
+.nav-cta { padding: 11px 20px; border-radius: 10px; font-size: 13px; font-weight: 800; background: var(--gradient-fire); color: #111; }
+.menu-btn { display: none; font-size: 24px; color: var(--yellow); }
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .menu-btn { display: block; }
+}
+
+.hero { position: relative; padding: 80px 0 100px; overflow: hidden; isolation: isolate; }
+.hero-bg { position: absolute; inset: 0; z-index: -1; }
+.hero-bg::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(255, 138, 30, 0.15), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 10% 70%, rgba(255, 212, 0, 0.08), transparent 60%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+.hero-orb {
+  position: absolute; top: 100px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255, 138, 30, 0.25) 0%, transparent 60%);
+  filter: blur(40px); z-index: -1; animation: glow-pulse 6s ease-in-out infinite;
+}
+.hero-content { position: relative; max-width: 820px; animation: float-up 1s var(--ease); }
+.hero h1 { margin: 24px 0 28px; }
+.hero h1 .accent {
+  background: var(--gradient-fire);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-sub { font-size: clamp(16px, 1.4vw, 19px); color: var(--text-soft); max-width: 640px; line-height: 1.55; margin-bottom: 40px; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
+.hero-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg); overflow: hidden;
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+}
+.hero-stat { background: rgba(15, 15, 20, 0.7); padding: 24px 22px; }
+.hero-stat-num { font-family: var(--font-mono); font-size: clamp(22px, 2.4vw, 30px); font-weight: 700; color: var(--yellow); line-height: 1; margin-bottom: 6px; }
+.hero-stat-lbl { font-size: 12px; color: var(--text-muted); font-weight: 600; letter-spacing: -0.01em; }
+@media (max-width: 768px) {
+  .hero { padding: 50px 0 60px; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .hero-orb { width: 400px; height: 400px; right: -150px; }
+}
+
+section { padding: 100px 0; position: relative; }
+@media (max-width: 768px) { section { padding: 60px 0; } }
+.section-head { max-width: 720px; margin-bottom: 56px; }
+.section-head h2 { margin: 18px 0 18px; }
+.section-head p { font-size: clamp(15px, 1.2vw, 17px); color: var(--text-soft); line-height: 1.6; }
+@media (max-width: 768px) { .section-head { margin-bottom: 36px; } }
+
+.why-lose { background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(255, 138, 30, 0.06), transparent 70%); }
+.why-lose-card {
+  background: linear-gradient(135deg, rgba(255, 138, 30, 0.06) 0%, rgba(15, 15, 20, 0.5) 50%);
+  border: 1px solid rgba(255, 138, 30, 0.15);
+  border-radius: var(--radius-xl); padding: 56px;
+  position: relative; overflow: hidden;
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+}
+.why-lose-card::before {
+  content: ""; position: absolute; top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(255, 212, 0, 0.1), transparent 60%);
+  filter: blur(40px);
+}
+.why-lose-content { position: relative; display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: center; }
+.why-lose-text h2 { font-size: clamp(28px, 3.8vw, 44px); margin: 16px 0 24px; }
+.why-lose-text p { font-size: 17px; color: var(--text-soft); line-height: 1.7; }
+.why-lose-text p b { color: var(--yellow); font-weight: 700; }
+.why-lose-visual { display: flex; flex-direction: column; gap: 12px; }
+.lose-tag {
+  background: rgba(15, 15, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 16px 18px; border-radius: 12px; font-size: 14px;
+  display: flex; align-items: center; gap: 12px; backdrop-filter: blur(10px);
+}
+.lose-tag.bad { border-color: rgba(255, 60, 60, 0.2); color: #ffa5a5; }
+.lose-tag.bad .dot { background: #ff4d4d; }
+.lose-tag.good { border-color: rgba(255, 212, 0, 0.3); background: rgba(255, 212, 0, 0.06); color: var(--yellow-hot); }
+.lose-tag.good .dot { background: var(--yellow); box-shadow: 0 0 12px var(--yellow); }
+.dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+@media (max-width: 900px) {
+  .why-lose-card { padding: 32px 24px; }
+  .why-lose-content { grid-template-columns: 1fr; gap: 32px; }
+}
+
+.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.ba-col { border-radius: var(--radius-lg); padding: 40px 36px; position: relative; overflow: hidden; }
+.ba-before { background: rgba(15, 15, 20, 0.5); border: 1px solid rgba(255, 60, 60, 0.15); }
+.ba-after {
+  background: linear-gradient(165deg, rgba(255, 138, 30, 0.12), rgba(15, 15, 20, 0.7));
+  border: 1px solid rgba(255, 212, 0, 0.25);
+  box-shadow: 0 20px 60px rgba(255, 138, 30, 0.1);
+}
+.ba-label {
+  display: inline-block; padding: 6px 14px; border-radius: 100px;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 20px;
+}
+.ba-before .ba-label { background: rgba(255, 60, 60, 0.15); color: #ff8080; }
+.ba-after .ba-label { background: rgba(255, 212, 0, 0.15); color: var(--yellow-hot); }
+.ba-col h3 { font-size: 22px; margin-bottom: 24px; line-height: 1.2; }
+.ba-list { list-style: none; }
+.ba-list li {
+  padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 15px; display: flex; align-items: flex-start; gap: 14px; color: var(--text-soft);
+}
+.ba-list li:last-child { border-bottom: none; }
+.ba-before .ba-list li::before { content: "✕"; color: #ff6666; font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+.ba-after .ba-list li::before { content: "✓"; color: var(--yellow); font-weight: 900; font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+.ba-after .ba-list li { color: #fff; }
+@media (max-width: 900px) {
+  .ba-grid { grid-template-columns: 1fr; }
+  .ba-col { padding: 28px 22px; }
+}
+
+.ai-helps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.ai-card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); padding: 32px 28px;
+  position: relative; overflow: hidden; transition: all 0.4s var(--ease);
+}
+.ai-card:hover { border-color: rgba(255, 212, 0, 0.3); transform: translateY(-4px); }
+.ai-card::after {
+  content: ""; position: absolute; top: 0; left: 0;
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 212, 0, 0.4), transparent);
+  opacity: 0; transition: opacity 0.4s;
+}
+.ai-card:hover::after { opacity: 1; }
+.ai-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: linear-gradient(135deg, rgba(255, 212, 0, 0.15), rgba(255, 138, 30, 0.05));
+  border: 1px solid rgba(255, 212, 0, 0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 22px;
+}
+.ai-card h3 { font-size: 18px; margin-bottom: 10px; letter-spacing: -0.015em; }
+.ai-card p { font-size: 14px; color: var(--text-muted); line-height: 1.55; }
+@media (max-width: 900px) {
+  .ai-helps-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .ai-card { padding: 24px 20px; }
+}
+@media (max-width: 540px) { .ai-helps-grid { grid-template-columns: 1fr; } }
+
+.services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.service {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius-xl); padding: 40px 36px;
+  position: relative; overflow: hidden; transition: all 0.4s var(--ease);
+  min-height: 280px; display: flex; flex-direction: column; justify-content: space-between;
+}
+.service:hover { border-color: rgba(255, 212, 0, 0.25); background: var(--card-hover); }
+.service-num { font-family: var(--font-mono); font-size: 13px; color: var(--yellow); font-weight: 700; letter-spacing: 0.1em; }
+.service h3 { font-size: 28px; margin: 18px 0 14px; letter-spacing: -0.025em; line-height: 1.1; }
+.service p { font-size: 15px; color: var(--text-muted); line-height: 1.55; margin-bottom: 24px; }
+.service-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.service-tag {
+  font-size: 12px; padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px; color: var(--text-soft); font-weight: 600;
+}
+.service-visual { position: absolute; top: 32px; right: 32px; width: 60px; height: 60px; opacity: 0.9; }
+.service-orb { width: 100%; height: 100%; border-radius: 50%; background: var(--gradient-fire); filter: blur(2px); opacity: 0.6; }
+@media (max-width: 768px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .service { padding: 28px 24px; min-height: auto; }
+  .service h3 { font-size: 22px; }
+}
+
+.how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.step {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); padding: 36px 30px;
+  position: relative; overflow: hidden;
+}
+.step::before {
+  content: ""; position: absolute; top: 0; left: 0;
+  width: 3px; height: 100%; background: var(--gradient-fire); opacity: 0.6;
+}
+.step-num {
+  font-family: var(--font-mono); font-size: 56px; font-weight: 700;
+  background: var(--gradient-fire);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1; margin-bottom: 16px;
+}
+.step h3 { font-size: 22px; margin-bottom: 12px; }
+.step p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+@media (max-width: 900px) { .how-steps { grid-template-columns: 1fr; } }
+
+.trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.trust-card {
+  background: linear-gradient(160deg, rgba(255, 212, 0, 0.04), rgba(15, 15, 20, 0.6));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius); padding: 28px 22px;
+  text-align: left; transition: all 0.3s var(--ease); backdrop-filter: blur(10px);
+}
+.trust-card:hover { border-color: rgba(255, 212, 0, 0.25); transform: translateY(-3px); }
+.trust-card-icon { font-size: 24px; margin-bottom: 14px; display: block; }
+.trust-card h4 { font-size: 16px; line-height: 1.25; letter-spacing: -0.015em; font-weight: 800; }
+@media (max-width: 900px) { .trust-grid { grid-template-columns: 1fr 1fr; } }
+
+.cta { position: relative; padding: 100px 0; overflow: hidden; }
+.cta-card {
+  background:
+    radial-gradient(circle at 80% 20%, rgba(255, 138, 30, 0.2), transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(255, 212, 0, 0.15), transparent 50%),
+    linear-gradient(135deg, #1a1a22 0%, #0f0f14 100%);
+  border: 1px solid rgba(255, 212, 0, 0.25);
+  border-radius: var(--radius-xl); padding: 80px 60px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.cta-card::before {
+  content: ""; position: absolute; inset: 0;
+  background: repeating-linear-gradient(135deg, transparent 0 30px, rgba(255, 212, 0, 0.02) 30px 31px);
+}
+.cta-content { position: relative; z-index: 1; }
+.cta h2 { font-size: clamp(32px, 5vw, 56px); margin: 20px auto 24px; max-width: 900px; }
+.cta-sub { font-size: clamp(15px, 1.4vw, 18px); color: var(--text-soft); max-width: 640px; margin: 0 auto 40px; line-height: 1.6; }
+.cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+@media (max-width: 768px) {
+  .cta-card { padding: 48px 24px; }
+  .cta-actions { flex-direction: column; width: 100%; }
+  .cta-actions .btn { width: 100%; }
+}
+
+.contact-section { padding: 100px 0; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: start; }
+.contact-left h2 { margin: 18px 0 24px; }
+.contact-left p { font-size: 16px; color: var(--text-soft); line-height: 1.6; margin-bottom: 36px; }
+.contact-cards { display: flex; flex-direction: column; gap: 12px; }
+.contact-card {
+  display: flex; align-items: center; gap: 16px;
+  padding: 18px 20px; background: var(--card);
+  border: 1px solid var(--line); border-radius: 14px;
+  transition: all 0.3s var(--ease);
+}
+.contact-card:hover { border-color: rgba(255, 212, 0, 0.35); background: var(--card-hover); transform: translateX(4px); }
+.contact-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255, 212, 0, 0.15), rgba(255, 138, 30, 0.08));
+  border: 1px solid rgba(255, 212, 0, 0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.contact-info-label { font-size: 12px; color: var(--text-muted); font-weight: 600; margin-bottom: 2px; }
+.contact-info-value { font-size: 16px; font-weight: 700; }
+
+.form-card {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(255, 138, 30, 0.08), transparent 50%),
+    var(--card);
+  border: 1px solid rgba(255, 212, 0, 0.2);
+  border-radius: var(--radius-xl); padding: 44px 40px; position: relative;
+}
+.form-card h3 { font-size: 26px; margin-bottom: 8px; }
+.form-card p.form-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; }
+.form-row { display: flex; flex-direction: column; gap: 14px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 12px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.04em; text-transform: uppercase; }
+.field input, .field textarea, .field select {
+  background: rgba(7, 7, 10, 0.7);
+  border: 1px solid var(--line);
+  border-radius: 12px; padding: 16px 18px;
+  color: #fff; font-size: 15px; font-family: inherit; font-weight: 500;
+  outline: none; transition: border-color 0.2s, background 0.2s; width: 100%;
+}
+.field input:focus, .field textarea:focus, .field select:focus {
+  border-color: var(--yellow); background: rgba(15, 15, 20, 0.9);
+}
+.field textarea { resize: vertical; min-height: 90px; font-family: inherit; }
+.field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath fill='%23FFD400' d='M7 9 0 0h14z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 18px center;
+  background-size: 12px; padding-right: 44px; cursor: pointer;
+}
+.field select option { background: #0f0f14; color: #fff; }
+.form-submit { margin-top: 8px; }
+.form-divider { margin: 26px 0 18px; display: flex; align-items: center; gap: 14px; font-size: 12px; color: var(--text-muted); font-weight: 600; }
+.form-divider::before, .form-divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.form-tg-btn {
+  width: 100%; background: rgba(34, 158, 217, 0.1);
+  border: 1px solid rgba(34, 158, 217, 0.4); color: #5cc1ed;
+  padding: 16px; border-radius: 12px; font-weight: 700; font-size: 14px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  transition: all 0.25s;
+}
+.form-tg-btn:hover { background: rgba(34, 158, 217, 0.18); border-color: #229ED9; color: #fff; }
+.form-success {
+  display: none; padding: 28px;
+  background: linear-gradient(135deg, rgba(255, 212, 0, 0.15), rgba(255, 138, 30, 0.05));
+  border: 1px solid rgba(255, 212, 0, 0.4); border-radius: var(--radius);
+  text-align: center;
+}
+.form-success.show { display: block; }
+.form-success-icon { font-size: 32px; margin-bottom: 12px; }
+.form-success h4 { font-size: 22px; margin-bottom: 8px; color: var(--yellow); }
+.form-success p { color: var(--text-soft); font-size: 14px; }
+.privacy-note { font-size: 11px; color: #666; text-align: center; margin-top: 16px; line-height: 1.5; }
+.privacy-note a { color: #888; text-decoration: underline; }
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+  .form-card { padding: 28px 22px; }
+}
+
+.footer {
+  border-top: 1px solid var(--line-soft); padding: 56px 0 80px;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(255, 138, 30, 0.05), transparent 60%),
+    var(--black);
+}
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 60px; margin-bottom: 40px; }
+.footer-brand p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin: 16px 0 22px; max-width: 360px; }
+.footer-socials { display: flex; gap: 10px; }
+.footer-socials a {
+  width: 40px; height: 40px; border-radius: 10px;
+  border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: var(--text-muted); transition: all 0.25s;
+}
+.footer-socials a:hover { border-color: var(--yellow); color: var(--yellow); transform: translateY(-2px); }
+.footer-col h5 { font-size: 11px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 18px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col li { font-size: 14px; color: var(--text-soft); }
+.footer-col a:hover { color: var(--yellow); }
+.footer-legal { padding-top: 24px; border-top: 1px solid var(--line-soft); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-muted); gap: 12px; flex-wrap: wrap; }
+@media (max-width: 768px) {
+  .footer { padding: 48px 0 100px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-legal { flex-direction: column; align-items: flex-start; }
+}
+
+.sticky-tg {
+  display: none;
+  position: fixed; bottom: 16px; left: 16px; right: 16px; z-index: 99;
+  background: #229ED9; color: #fff;
+  padding: 16px; border-radius: 14px;
+  font-weight: 800; font-size: 15px; text-align: center;
+  box-shadow: 0 12px 32px rgba(34, 158, 217, 0.4);
+  align-items: center; justify-content: center; gap: 10px;
+}
+@media (max-width: 768px) { .sticky-tg { display: flex; } }
+
+.tg-icon { width: 18px; height: 18px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo">
+      <div class="logo-box">AI</div>
+      <div class="logo-text">AI Строй</div>
+    </a>
+    <div class="nav-links">
+      <a href="#why">Проблема</a>
+      <a href="#services">Услуги</a>
+      <a href="#how">Как работает</a>
+      <a href="#contact">Контакты</a>
+    </div>
+    <div class="nav-actions">
+      <a href="#contact" class="nav-cta">Оставить заявку</a>
+    </div>
+    <button class="menu-btn" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">☰</button>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="hero-orb"></div>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <span class="eyebrow">AI · Контент · Реклама для стройки</span>
+      <h1>
+        Начните привлекать клиентов<br>
+        через <span class="accent">AI-контент</span>
+      </h1>
+      <p class="hero-sub">
+        Создаём AI-визуалы, Reels, сайты и рекламу для строительных компаний, чтобы ваш бизнес выглядел современно, вызывал доверие и привлекал клиентов из интернета.
+      </p>
+      <div class="hero-actions">
+        <a href="#how" class="btn btn-primary">
+          Посмотреть, как это работает
+          <span class="arrow">→</span>
+        </a>
+        <a href="#contact" class="btn btn-secondary">
+          Запустить AI для моего бизнеса
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">AI</div>
+          <div class="hero-stat-lbl">визуалы и Reels</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">×3</div>
+          <div class="hero-stat-lbl">больше внимания</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">0</div>
+          <div class="hero-stat-lbl">съёмок и операторов</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">B2B</div>
+          <div class="hero-stat-lbl">для стройки</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why-lose" id="why">
+  <div class="container">
+    <div class="why-lose-card reveal">
+      <div class="why-lose-content">
+        <div class="why-lose-text">
+          <span class="eyebrow">Почему теряются клиенты</span>
+          <h2>Сегодня клиент выбирает того, кому быстрее <span class="gradient-text">начинает доверять</span></h2>
+          <p>
+            Клиент выбирает не только того, кто хорошо строит. Он выбирает того, кому быстрее доверяет.
+            <br><br>
+            Пока одни компании выкладывают <b>случайные фото объектов</b> — другие используют современный контент, который создаёт ощущение сильного бренда. Угадайте, кому пишут в Direct.
+          </p>
+        </div>
+        <div class="why-lose-visual">
+          <div class="lose-tag bad"><span class="dot"></span>Пустой Instagram</div>
+          <div class="lose-tag bad"><span class="dot"></span>Фото с телефона</div>
+          <div class="lose-tag bad"><span class="dot"></span>Нет визуального стиля</div>
+          <div class="lose-tag bad"><span class="dot"></span>Сайт из 2010-х</div>
+          <div class="lose-tag good"><span class="dot"></span>Современная упаковка</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">До / После</span>
+      <h2>Как меняется восприятие бизнеса</h2>
+      <p>Один и тот же бизнес. Разная упаковка. Разная цена в глазах клиента.</p>
+    </div>
+    <div class="ba-grid">
+      <div class="ba-col ba-before reveal">
+        <span class="ba-label">До</span>
+        <h3>Стандартная стройка<br>"как у всех"</h3>
+        <ul class="ba-list">
+          <li>Instagram выглядит пустым</li>
+          <li>Мало доверия — мало заявок</li>
+          <li>Слабый визуал, фото с телефона</li>
+          <li>Реклама не цепляет внимание</li>
+          <li>Клиент не видит разницы между вами и конкурентами</li>
+        </ul>
+      </div>
+      <div class="ba-col ba-after reveal">
+        <span class="ba-label">После</span>
+        <h3>Современный<br>строительный бренд</h3>
+        <ul class="ba-list">
+          <li>Бизнес выглядит современно</li>
+          <li>AI-визуалы привлекают внимание</li>
+          <li>Reels создают интерес и доверие</li>
+          <li>Сайт объясняет ценность бизнеса</li>
+          <li>Услуги воспринимаются дороже</li>
+          <li>Заявки приходят через интернет</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">AI × Стройка</span>
+      <h2>Как AI помогает строительному бизнесу <span class="gradient-text">создавать контент быстрее</span></h2>
+      <p>Больше не нужен сложный продакшн, чтобы выглядеть современно. AI делает то, на что раньше уходили недели.</p>
+    </div>
+    <div class="ai-helps-grid">
+      <div class="ai-card reveal">
+        <div class="ai-icon">🎨</div>
+        <h3>AI-визуалы</h3>
+        <p>Кинематографичные кадры стройки и интерьеров без выезда оператора.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon">🎬</div>
+        <h3>AI-Reels</h3>
+        <p>Короткие вертикальные ролики, которые залипают и собирают просмотры.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon">📱</div>
+        <h3>Визуал для Instagram</h3>
+        <p>Целостная лента, которая выглядит как у крупного застройщика.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon">🚀</div>
+        <h3>Рекламные креативы</h3>
+        <p>Объявления, которые цепляют взгляд в ленте и приводят заявки.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon">🌐</div>
+        <h3>Landing Page</h3>
+        <p>Сайт, который объясняет ценность и конвертирует посетителей в клиентов.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon">⚡</div>
+        <h3>Скорость × цена</h3>
+        <p>Контент в разы быстрее и дешевле классического продакшена.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Что мы делаем</span>
+      <h2>Четыре направления — одна цель: <span class="gradient-text">больше клиентов из интернета</span></h2>
+    </div>
+    <div class="services-grid">
+      <div class="service reveal">
+        <div class="service-visual"><div class="service-orb"></div></div>
+        <div>
+          <span class="service-num">01</span>
+          <h3>AI-визуалы для строительного бизнеса</h3>
+          <p>Современные изображения объектов, интерьеров и процессов. Стиль, который запоминается с первого скролла.</p>
+        </div>
+        <div class="service-tags">
+          <span class="service-tag">Instagram</span>
+          <span class="service-tag">Сайт</span>
+          <span class="service-tag">Презентации</span>
+        </div>
+      </div>
+
+      <div class="service reveal">
+        <div class="service-visual"><div class="service-orb"></div></div>
+        <div>
+          <span class="service-num">02</span>
+          <h3>Reels и рекламные креативы</h3>
+          <p>Вертикальные видео, которые залипают в ленте Instagram и TikTok. Без съёмок и видеооператора.</p>
+        </div>
+        <div class="service-tags">
+          <span class="service-tag">Reels</span>
+          <span class="service-tag">TikTok</span>
+          <span class="service-tag">Shorts</span>
+        </div>
+      </div>
+
+      <div class="service reveal">
+        <div class="service-visual"><div class="service-orb"></div></div>
+        <div>
+          <span class="service-num">03</span>
+          <h3>Сайты и Landing Page</h3>
+          <p>Лендинги, которые объясняют ценность вашего бизнеса за 30 секунд и превращают посетителей в заявки.</p>
+        </div>
+        <div class="service-tags">
+          <span class="service-tag">Landing</span>
+          <span class="service-tag">Mobile-first</span>
+          <span class="service-tag">SEO</span>
+        </div>
+      </div>
+
+      <div class="service reveal">
+        <div class="service-visual"><div class="service-orb"></div></div>
+        <div>
+          <span class="service-num">04</span>
+          <h3>Настройка лидогенерации</h3>
+          <p>Запускаем рекламу в Instagram и TikTok, ведём её на ваш сайт. Поток заявок без вашего участия.</p>
+        </div>
+        <div class="service-tags">
+          <span class="service-tag">Meta Ads</span>
+          <span class="service-tag">TikTok Ads</span>
+          <span class="service-tag">Аналитика</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Как это работает</span>
+      <h2>Три шага до <span class="gradient-text">современной упаковки</span> вашего бизнеса</h2>
+    </div>
+    <div class="how-steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h3>Анализируем бизнес и нишу</h3>
+        <p>Изучаем, что вы строите, для кого, как выглядят сильнейшие конкуренты в вашем сегменте.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h3>Создаём упаковку</h3>
+        <p>Визуалы, Reels, сайт. Всё в едином современном стиле, который выделит вас среди конкурентов.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h3>Запускаем привлечение клиентов</h3>
+        <p>Настраиваем рекламу, ведём её на сайт. Вы получаете заявки и работаете по своему направлению.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Что получит ваш бизнес</span>
+      <h2>Не "ИИ ради ИИ" — а <span class="gradient-text">конкретные изменения</span></h2>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card reveal">
+        <span class="trust-card-icon">✨</span>
+        <h4>Современный визуал</h4>
+      </div>
+      <div class="trust-card reveal">
+        <span class="trust-card-icon">💎</span>
+        <h4>Сильная упаковка бизнеса</h4>
+      </div>
+      <div class="trust-card reveal">
+        <span class="trust-card-icon">👁️</span>
+        <h4>Внимание аудитории</h4>
+      </div>
+      <div class="trust-card reveal">
+        <span class="trust-card-icon">🎬</span>
+        <h4>Готовый AI-контент</h4>
+      </div>
+      <div class="trust-card reveal">
+        <span class="trust-card-icon">📱</span>
+        <h4>Современный Instagram</h4>
+      </div>
+      <div class="trust-card reveal">
+        <span class="trust-card-icon">🚀</span>
+        <h4>Рекламные креативы</h4>
+      </div>
+      <div class="trust-card reveal">
+        <span class="trust-card-icon">🌐</span>
+        <h4>Сайт под заявки</h4>
+      </div>
+      <div class="trust-card reveal">
+        <span class="trust-card-icon">⚡</span>
+        <h4>Ощущение сильного бренда</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="cta-card reveal">
+      <div class="cta-content">
+        <span class="eyebrow" style="justify-content:center;">Время действовать</span>
+        <h2>Ваш строительный бизнес может выглядеть <span class="gradient-text">намного сильнее</span> уже сейчас</h2>
+        <p class="cta-sub">
+          Пока конкуренты используют старые методы — вы можете начать привлекать внимание через современный AI-контент.
+        </p>
+        <div class="cta-actions">
+          <a href="#contact" class="btn btn-primary">
+            Запустить AI для моего бизнеса
+            <span class="arrow">→</span>
+          </a>
+          <a href="https://t.me/stroimtelegram" target="_blank" rel="noopener" class="btn btn-tg">
+            <svg class="tg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.13-3.05-1.98 1.93c-.23.23-.42.42-.85.42z"/></svg>
+            Написать в Telegram
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-left reveal">
+        <span class="eyebrow">Контакты</span>
+        <h2>Расскажите о своём бизнесе</h2>
+        <p>Заполните форму или напишите напрямую — обсудим, как современная упаковка поможет именно вашей компании.</p>
+        <div class="contact-cards">
+          <a href="https://t.me/stroimtelegram" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-icon">
+              <svg class="tg-icon" viewBox="0 0 24 24" fill="#5cc1ed"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.13-3.05-1.98 1.93c-.23.23-.42.42-.85.42z"/></svg>
+            </div>
+            <div>
+              <div class="contact-info-label">Telegram</div>
+              <div class="contact-info-value">@stroimtelegram</div>
+            </div>
+          </a>
+          <a href="tel:+375444862261" class="contact-card">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-info-label">Телефон</div>
+              <div class="contact-info-value">+375 (44) 486-22-61</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="form-card reveal">
+        <div id="formSuccess" class="form-success">
+          <div class="form-success-icon">✓</div>
+          <h4>Спасибо! Заявка отправлена.</h4>
+          <p>Свяжемся с вами в ближайшее время.</p>
+        </div>
+
+        <form id="leadForm"
+              name="aistroy-lead"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              onsubmit="return handleSubmit(event)">
+
+          <input type="hidden" name="form-name" value="aistroy-lead">
+          <p style="display:none;"><label>Не заполняйте: <input name="bot-field"></label></p>
+
+          <h3>Оставить заявку</h3>
+          <p class="form-sub">Поможем сделать упаковку, привлекающую клиентов из интернета</p>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="lf-name">Имя</label>
+              <input type="text" id="lf-name" name="name" placeholder="Как к вам обращаться" required>
+            </div>
+            <div class="field">
+              <label for="lf-contact">Telegram или телефон</label>
+              <input type="text" id="lf-contact" name="contact" placeholder="@username или +375..." required>
+            </div>
+            <div class="field">
+              <label for="lf-niche">Ниша</label>
+              <select id="lf-niche" name="niche" required>
+                <option value="">Выберите вашу нишу</option>
+                <option value="Коттеджи / частные дома">Коттеджи / частные дома</option>
+                <option value="Многоквартирная застройка">Многоквартирная застройка</option>
+                <option value="Ремонт квартир и помещений">Ремонт квартир и помещений</option>
+                <option value="Коммерческая стройка">Коммерческая стройка</option>
+                <option value="Бани, беседки, малые формы">Бани, беседки, малые формы</option>
+                <option value="Кровля, фасады, отделка">Кровля, фасады, отделка</option>
+                <option value="Другое">Другое</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="lf-about">Коротко о бизнесе</label>
+              <textarea id="lf-about" name="about" placeholder="Чем занимаетесь, где работаете, что хотите получить от AI-упаковки"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary form-submit btn-block">
+            Отправить заявку
+            <span class="arrow">→</span>
+          </button>
+
+          <div class="form-divider">Или напишите напрямую в Telegram</div>
+
+          <a href="https://t.me/stroimtelegram" target="_blank" rel="noopener" class="form-tg-btn">
+            <svg class="tg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.13-3.05-1.98 1.93c-.23.23-.42.42-.85.42z"/></svg>
+            Написать в Telegram
+          </a>
+
+          <div class="privacy-note">
+            Отправляя заявку, вы соглашаетесь с <a href="#">политикой обработки персональных данных</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-box">AI</div>
+          <div class="logo-text">AI Строй</div>
+        </div>
+        <p>AI-контент, Reels, сайты и реклама для строительного бизнеса. Современная упаковка, которая привлекает клиентов из интернета.</p>
+        <div class="footer-socials">
+          <a href="https://t.me/stroimtelegram" target="_blank" rel="noopener" aria-label="Telegram">
+            <svg class="tg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.13-3.05-1.98 1.93c-.23.23-.42.42-.85.42z"/></svg>
+          </a>
+          <a href="tel:+375444862261" aria-label="Phone">📞</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Навигация</h5>
+        <ul>
+          <li><a href="#why">Проблема</a></li>
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#how">Как работает</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Контакты</h5>
+        <ul>
+          <li><a href="https://t.me/stroimtelegram" target="_blank" rel="noopener">Telegram: @stroimtelegram</a></li>
+          <li><a href="tel:+375444862261">+375 (44) 486-22-61</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <div>© 2026 AI Строй · Ивашкевич Владислав Александрович</div>
+      <div>УНП: KK5688699</div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://t.me/stroimtelegram" target="_blank" rel="noopener" class="sticky-tg">
+  <svg class="tg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.13-3.05-1.98 1.93c-.23.23-.42.42-.85.42z"/></svg>
+  Написать в Telegram
+</a>
+
+<script>
+async function handleSubmit(event) {
+  event.preventDefault();
+  const form = event.target;
+  const formData = new FormData(form);
+
+  try {
+    // 1) Сохраняем заявку в Netlify Forms
+    await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    });
+
+    // 2) Отправляем заявку в Telegram через безопасную Netlify Function
+    await fetch('/.netlify/functions/send-telegram', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(Object.fromEntries(formData))
+    });
+
+    form.style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+    document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } catch (error) {
+    alert('Ошибка отправки. Попробуйте написать в Telegram: @stroimtelegram');
+    console.error(error);
+  }
+
+  return false;
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
